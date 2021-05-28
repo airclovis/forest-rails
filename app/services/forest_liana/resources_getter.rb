@@ -173,11 +173,15 @@ module ForestLiana
 
         begin
           segmentQuery = @params[:segmentQuery].gsub(/\;\s*$/, '')
-          table = @resource.table_name
-          @records = @records.with(segment: segmentQuery).join("
-            JOIN segment
-            ON #{table}.#{@resource.primary_key} = segment.id
-          ")
+          # table = @resource.table_name
+          # @records = @records.with(segment: segmentQuery).join("
+          #   JOIN segment
+          #   ON #{table}.#{@resource.primary_key} = segment.id
+          # ")
+          puts "Records class : #{@records.class}, records : #{@records}"
+          @records = @records.where(
+            "#{@resource.table_name}.#{@resource.primary_key} IN (SELECT id FROM (#{segmentQuery}) as ids)"
+          )
         rescue => error
           error_message = "Live Query Segment: #{error.message}"
           FOREST_LOGGER.error(error_message)
