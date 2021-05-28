@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     forest_liana (5.4.3)
+      activerecord-cte
       arel-helpers
       base32
       bcrypt
@@ -62,6 +63,8 @@ GEM
     activerecord (6.0.3.4)
       activemodel (= 6.0.3.4)
       activesupport (= 6.0.3.4)
+    activerecord-cte (0.1.1)
+      activerecord
     activestorage (6.0.3.4)
       actionpack (= 6.0.3.4)
       activejob (= 6.0.3.4)
@@ -79,7 +82,7 @@ GEM
     bcrypt (3.1.16)
     builder (3.2.4)
     byebug (11.1.3)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     crass (1.0.6)
     diff-lcs (1.4.4)
     docile (1.3.2)
@@ -91,13 +94,13 @@ GEM
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.8.5)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
     jsonapi-serializers (1.0.1)
       activesupport
     jwt (2.2.2)
-    loofah (2.8.0)
+    loofah (2.9.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -108,14 +111,18 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.1104)
-    mimemagic (0.3.5)
-    mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
-    minitest (5.14.2)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
+    mini_mime (1.1.0)
+    mini_portile2 (2.5.1)
+    minitest (5.14.4)
     multi_xml (0.6.0)
-    nio4r (2.5.4)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nio4r (2.5.7)
+    nokogiri (1.11.6)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
+    racc (1.5.2)
     rack (2.2.3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -147,7 +154,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
-    rake (13.0.1)
+    rake (13.0.3)
     rotp (6.2.0)
     rspec-core (3.8.2)
       rspec-support (~> 3.8.0)
@@ -180,12 +187,12 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    thor (1.0.1)
+    thor (1.1.0)
     thread_safe (0.3.6)
-    tzinfo (1.2.8)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     useragent (0.16.10)
-    websocket-driver (0.7.3)
+    websocket-driver (0.7.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.4.2)
@@ -194,6 +201,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-cte
   arel-helpers (= 2.11.0)
   base32 (= 0.3.4)
   bcrypt
