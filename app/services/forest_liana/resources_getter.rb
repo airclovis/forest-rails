@@ -178,10 +178,12 @@ module ForestLiana
           #   JOIN segment
           #   ON #{table}.#{@resource.primary_key} = segment.id
           # ")
-          puts "Records class : #{@records.class}, records : #{@records}"
-          @records = @records.where(
-            "#{@resource.table_name}.#{@resource.primary_key} IN (SELECT id FROM (#{segmentQuery}) as ids)"
-          )
+          id_list = ActiveRecord::Base
+            .connection
+            .execute(segmentQuery)
+            .map { |r| r.values.first }
+
+          @records = @records.where(id: id_list)
         rescue => error
           error_message = "Live Query Segment: #{error.message}"
           FOREST_LOGGER.error(error_message)
